@@ -12,6 +12,7 @@ IF I_BDC IS NOT INITIAL.
    ENDIF.
 
 ****************************************************
+* BDCMSGCOLL의 내용을 이용하여 메시지를 String으로 세팅해주는 작업
    DATA : LV_MSG TYPE STRING.
    LOOP AT I_MSG INTO W_MSG.
      CLEAR LV_MSG.

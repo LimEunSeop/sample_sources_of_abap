@@ -1,8 +1,8 @@
-# Á¦¸ñ
-ALV ±âº» Æ²
-# ¸ñÀû
-ABAP ÇÁ·Î±×·¡¹ÖÀÇ ÁÖ°¡ ALV ¸¸µå´Â °ÍÀÎµ¥, ¸Å¹ø ALV ¼Ò½º¸¦ Â¥¾ßÇÏ´Â ¹Ýº¹ÀûÀÎ ¼ö°í¸¦ ´ú±â À§ÇÔ.
-# Æ¯ÀÌ»çÇ×
-- Excutable ProgramÀ¸·Î ¸¸µé¾úÀ½.
-- alvÀÇ ÄÁÅ×ÀÌ³Ê´Â custom containerÀÌ¸ç, ÀÌ¸§Àº GO_CONTAINERÀÓ.
-- È­¸é 0100ÀÇ status¿¡¼­ BACK, EXIT, CANC¸¦ °¢ E Ä¿¸Çµå·Î ±¸ÇöÇÏ¿´À½.
+# ì œëª©
+ALV ê¸°ë³¸ í‹€
+# ëª©ì 
+ABAP í”„ë¡œê·¸ëž˜ë°ì˜ ì£¼ê°€ ALV ë§Œë“œëŠ” ê²ƒì¸ë°, ë§¤ë²ˆ ALV ì†ŒìŠ¤ë¥¼ ì§œì•¼í•˜ëŠ” ë°˜ë³µì ì¸ ìˆ˜ê³ ë¥¼ ëœê¸° ìœ„í•¨.
+# íŠ¹ì´ì‚¬í•­
+- Excutable Programìœ¼ë¡œ ë§Œë“¤ì—ˆìŒ.
+- alvì˜ ì»¨í…Œì´ë„ˆëŠ” custom containerì´ë©°, ì´ë¦„ì€ GO_CONTAINERìž„.
+- í™”ë©´ 0100ì˜ statusì—ì„œ BACK, EXIT, CANCë¥¼ ê° E ì»¤ë§¨ë“œë¡œ êµ¬í˜„í•˜ì˜€ìŒ.

@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=ISO-8859-1" />
+<title>ZALVFRAME_F01</title>
+<style type="text/css">
+.code{ font-family:"Courier New", Courier, monospace; color:#000; font-size:14px; background-color:#F2F4F7 }
+  .codeComment {font-family:"Courier New", Courier, monospace; color:#0000F0; font-size:14px; background-color:#F2F4F7 }
+  .normalBold{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; font-weight:800 }
+  .normalBoldLarge{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+</style>
+<style type="text/css">
+  .normal{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px }
+  .footer{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:12px; text-align: center }
+  h2{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:16px; font-weight:800 }
+  h3{ font-family:Arial, Helvetica, sans-serif; color:#000; font-size:14px; font-weight:800 }
+  .outerTable{
+   background-color:#E0E7ED;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-right-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+  .innerTable{
+   background-color:#F2F4F7;
+   width:100%;
+   border-top-width: thin;
+   border-right-width: thin;
+   border-bottom-width: thin;
+   border-left-width: thin;
+   border-top-style: solid;
+   border-right-style: solid;
+   border-bottom-style: solid;
+   border-left-style: solid;
+  }
+</style>
+</head>
+<body>
+<table class="outerTable">
+  <tr class="normalBoldLarge">
+     <td><h2>Code listing for: ZALVFRAME_F01</h2>
+<h3> Description: Include ZALVFRAME_F01</h3></td>
+   </tr>
+  <tr>
+     <td>
+     <table class="innerTable">
+       <tr>
+          <td>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;Include&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ZALVFRAME_F01<br />
+*&---------------------------------------------------------------------*<br />
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;&nbsp;GET_DATA<br />
+*&---------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;--&gt;&nbsp;&nbsp;p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&nbsp;&nbsp;&lt;--&nbsp;&nbsp;p2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM get_data .<br />
+&nbsp;&nbsp;CLEAR&nbsp;:&nbsp;gt_data,&nbsp;gt_data[].<br />
+<br />
+   </div>
+   <div class="codeComment">
+*&nbsp;MARA&nbsp;:&nbsp;a,&nbsp;&nbsp;MAKT&nbsp;:&nbsp;b<br />
+   </div>
+   <div class="code">
+&nbsp;&nbsp;SELECT&nbsp;a~matnr&nbsp;b~maktx&nbsp;a~matkl&nbsp;a~mtart&nbsp;a~meins<br />
+&nbsp;&nbsp;&nbsp;&nbsp;INTO&nbsp;CORRESPONDING&nbsp;FIELDS&nbsp;OF&nbsp;TABLE&nbsp;gt_data<br />
+&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;mara&nbsp;AS&nbsp;a&nbsp;INNER&nbsp;JOIN&nbsp;makt&nbsp;AS&nbsp;b<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ON&nbsp;a~matnr&nbsp;=&nbsp;b~matnr<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AND&nbsp;b~spras&nbsp;=&nbsp;p_spras<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;a~mtart&nbsp;IN&nbsp;s_mtart<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AND&nbsp;a~matkl&nbsp;IN&nbsp;s_matkl<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AND&nbsp;a~matnr&nbsp;IN&nbsp;s_matnr.<br />
+ENDFORM.                    " GET_DATA<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;&nbsp;SET_FCAT<br />
+*&---------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;--&gt;&nbsp;&nbsp;p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&nbsp;&nbsp;&lt;--&nbsp;&nbsp;p2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM set_fcat .<br />
+<br />
+&nbsp;&nbsp;CLEAR&nbsp;:&nbsp;gt_fcat.<br />
+<br />
+&nbsp;&nbsp;PERFORM&nbsp;insert_fcat_line&nbsp;USING&nbsp;:<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'X'&nbsp;&nbsp;'MATNR'&nbsp;&nbsp;'자재코드'&nbsp;&nbsp;'MARA',<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;'MAKTX'&nbsp;&nbsp;'자재내역'&nbsp;&nbsp;'MAKT',<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;'MATKL'&nbsp;&nbsp;'자재그룹'&nbsp;&nbsp;'MARA',<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;'MTART'&nbsp;&nbsp;'자재유형'&nbsp;&nbsp;'MARA',<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'&nbsp;'&nbsp;&nbsp;'MEINS'&nbsp;&nbsp;'기본단위'&nbsp;&nbsp;'MARA'.<br />
+<br />
+ENDFORM.                    " SET_FCAT<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;&nbsp;DISPLAY_SCREEN<br />
+*&---------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;--&gt;&nbsp;&nbsp;p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&nbsp;&nbsp;&lt;--&nbsp;&nbsp;p2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM display_screen .<br />
+<br />
+&nbsp;&nbsp;IF&nbsp;go_container&nbsp;IS&nbsp;NOT&nbsp;BOUND.<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PERFORM&nbsp;create_alv_grid.<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PERFORM&nbsp;set_fcat.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PERFORM&nbsp;set_layout.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PERFORM&nbsp;set_etc.<br />
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PERFORM&nbsp;display_alv_grid.<br />
+<br />
+&nbsp;&nbsp;ELSE.<br />
+&nbsp;&nbsp;&nbsp;&nbsp;PERFORM&nbsp;refresh_alv.<br />
+&nbsp;&nbsp;ENDIF.<br />
+<br />
+ENDFORM.                    " DISPLAY_SCREEN<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;&nbsp;CREATE_ALV_GRID<br />
+*&---------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;--&gt;&nbsp;&nbsp;p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&nbsp;&nbsp;&lt;--&nbsp;&nbsp;p2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM create_alv_grid .<br />
+<br />
+&nbsp;&nbsp;CREATE&nbsp;OBJECT&nbsp;go_container<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;container_name&nbsp;=&nbsp;'GO_CONTAINER'.<br />
+<br />
+&nbsp;&nbsp;CREATE&nbsp;OBJECT&nbsp;go_grid<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i_parent&nbsp;=&nbsp;go_container.<br />
+<br />
+ENDFORM.                    " CREATE_ALV_GRID<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;&nbsp;SET_LAYOUT<br />
+*&---------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;--&gt;&nbsp;&nbsp;p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&nbsp;&nbsp;&lt;--&nbsp;&nbsp;p2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM set_layout .<br />
+&nbsp;&nbsp;CLEAR&nbsp;:&nbsp;gs_layout.<br />
+<br />
+&nbsp;&nbsp;gs_layout-zebra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;gs_layout-sel_mode&nbsp;&nbsp;&nbsp;=&nbsp;'D'.<br />
+&nbsp;&nbsp;gs_layout-cwidth_opt&nbsp;=&nbsp;'X'.<br />
+ENDFORM.                    " SET_LAYOUT<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;&nbsp;SET_ETC<br />
+*&---------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;--&gt;&nbsp;&nbsp;p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&nbsp;&nbsp;&lt;--&nbsp;&nbsp;p2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM set_etc .<br />
+&nbsp;&nbsp;CLEAR&nbsp;:&nbsp;gs_stable,&nbsp;gs_variant.<br />
+<br />
+&nbsp;&nbsp;gs_stable-col&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;gs_stable-row&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'.<br />
+&nbsp;&nbsp;gs_variant-report&nbsp;=&nbsp;sy-repid.<br />
+ENDFORM.                    " SET_ETC<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;&nbsp;INSERT_FCAT_LINE<br />
+*&---------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;P_0042&nbsp;&nbsp;&nbsp;text<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;P_0043&nbsp;&nbsp;&nbsp;text<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;P_0044&nbsp;&nbsp;&nbsp;text<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--&gt;P_0045&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM insert_fcat_line  USING   p_key p_fieldname p_coltext p_ref_table.<br />
+<br />
+&nbsp;&nbsp;CLEAR&nbsp;:&nbsp;gs_fcat.<br />
+<br />
+&nbsp;&nbsp;gs_fcat-key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;p_key.<br />
+&nbsp;&nbsp;gs_fcat-fieldname&nbsp;=&nbsp;p_fieldname.<br />
+&nbsp;&nbsp;gs_fcat-coltext&nbsp;&nbsp;&nbsp;=&nbsp;p_coltext.<br />
+&nbsp;&nbsp;gs_fcat-ref_table&nbsp;=&nbsp;p_ref_table.<br />
+<br />
+&nbsp;&nbsp;APPEND&nbsp;gs_fcat&nbsp;TO&nbsp;gt_fcat.<br />
+<br />
+ENDFORM.                    " INSERT_FCAT_LINE<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;&nbsp;DISPLAY_ALV_GRID<br />
+*&---------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;--&gt;&nbsp;&nbsp;p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&nbsp;&nbsp;&lt;--&nbsp;&nbsp;p2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM display_alv_grid .<br />
+&nbsp;&nbsp;CALL&nbsp;METHOD&nbsp;go_grid-&gt;set_table_for_first_display<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is_variant&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;gs_variant<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i_save&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;'X'<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is_layout&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;gs_layout<br />
+&nbsp;&nbsp;&nbsp;&nbsp;CHANGING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it_outtab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;gt_data[]<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it_fieldcatalog&nbsp;=&nbsp;gt_fcat.<br />
+ENDFORM.                    " DISPLAY_ALV_GRID<br />
+   </div>
+   <div class="codeComment">
+*&---------------------------------------------------------------------*<br />
+*&&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Form&nbsp;&nbsp;REFRESH_ALV<br />
+*&---------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+*&nbsp;&nbsp;--&gt;&nbsp;&nbsp;p1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*&nbsp;&nbsp;&lt;--&nbsp;&nbsp;p2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;text<br />
+*----------------------------------------------------------------------*<br />
+   </div>
+   <div class="code">
+FORM refresh_alv .<br />
+&nbsp;&nbsp;CALL&nbsp;METHOD&nbsp;go_grid-&gt;refresh_table_display<br />
+&nbsp;&nbsp;&nbsp;&nbsp;EXPORTING<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;is_stable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;gs_stable<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i_soft_refresh&nbsp;=&nbsp;space.<br />
+ENDFORM.                    " REFRESH_ALV<br />
+            </div>
+          </td>
+        </tr>
+      </table>
+      </td>
+      </tr>
+   <tr>
+<td class="footer">Extracted by Mass Download version 1.4.4 - E.G.Mellodew. 1998-2018. Sap Release 701</td>
+   </tr>
+</table>
+</body>
+</html>

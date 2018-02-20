@@ -1,13 +1,13 @@
-# ¸µÅ©
+# ë§í¬
 
 https://limeunseop.github.io/sample_sources_of_abap/alv/zsplitscreen_demo/zsplitscreen_demo.html
 
-# Á¦¸ñ
+# ì œëª©
 
-È­¸é ºÐÇÒ ±âº» ¿¹Á¦
+í™”ë©´ ë¶„í•  ê¸°ë³¸ ì˜ˆì œ
 
-# Æ¯ÀÌ»çÇ×
+# íŠ¹ì´ì‚¬í•­
 
-- ¹öÆ°À» ´©¸£¸é ¾ÆÀÌÅÛ Ã¢ÀÌ »õ·Î »ý¼ºµÇ°í ´Ý±â ´©¸£¸é ¾ø¾îÁü.
-- Çì´õºÎºÐ È­¸éÀ» sflight, ¾ÆÀÌÅÛºÎºÐ È­¸éÀ» sbook Å×ÀÌºíÀ» Âü°íÇÏ¿´À½
-- È­¸é 0100ÀÇ status BACK,EXIT,CANC¸¦ EÄ¿¸àµå·Î ÇÏ¿´À½
+- ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ ì•„ì´í…œ ì°½ì´ ìƒˆë¡œ ìƒì„±ë˜ê³  ë‹«ê¸° ëˆ„ë¥´ë©´ ì—†ì–´ì§.
+- í—¤ë”ë¶€ë¶„ í™”ë©´ì„ sflight, ì•„ì´í…œë¶€ë¶„ í™”ë©´ì„ sbook í…Œì´ë¸”ì„ ì°¸ê³ í•˜ì˜€ìŒ
+- í™”ë©´ 0100ì˜ status BACK,EXIT,CANCë¥¼ Eì»¤ë©˜ë“œë¡œ í•˜ì˜€ìŒ
